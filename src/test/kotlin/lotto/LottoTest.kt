@@ -3,6 +3,8 @@ package lotto
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertFalse
 
 
 class LottoTest {
@@ -37,4 +39,19 @@ class LottoTest {
         val result = lotto.countCorrectNumber(winNumber)
         assertThat(result).isEqualTo(3)
     }
+
+    @Test
+    fun `보너스 번호에 당첨됨`(){
+        val lotto = Lotto(listOf(1,2,3,4,5,6))
+        val result = lotto.checkBonusNumberCorrect(6)
+        assertTrue(result)
+    }
+
+    @Test
+    fun `보너스 번호에 당첨되지 않음`(){
+        val lotto = Lotto(listOf(1,2,3,4,5,6))
+        val result = lotto.checkBonusNumberCorrect(7)
+        assertFalse(result)
+    }
+
 }
