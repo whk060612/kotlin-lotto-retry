@@ -26,6 +26,13 @@ class ResultCalculatorTest {
         assertThat(result).isEqualTo(expected)
     }
 
+    @ParameterizedTest
+    @MethodSource("provideYieldRankTestParameters")
+    fun `수익률을 계산한다`(prize: Int, buyMoney: Int, expected: Double) {
+        val result = resultCalculator.calculateYieldRate(prize, buyMoney)
+        assertThat(result).isEqualTo(expected)
+    }
+
     companion object {
         @JvmStatic
         fun provideRankTestParameters(): Stream<Arguments> {
@@ -35,10 +42,14 @@ class ResultCalculatorTest {
                 Arguments.of(SECOND_AND_THIRD_CORRECT_COUNT, false, Rank.THIRD)
             )
         }
+
+        @JvmStatic
+        fun provideYieldRankTestParameters(): Stream<Arguments> {
+            return Stream.of(
+                Arguments.of(Rank.FIFTH.prize, 8000, 62.5),
+                Arguments.of(Rank.FIFTH.prize, 3000, 166.7)
+            )
+        }
     }
 
-//    @Test
-//    fun `수익률을 계산한다`() {
-//
-//    }
 }
