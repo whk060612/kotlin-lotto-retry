@@ -9,7 +9,6 @@ class Lotto(private val numbers: List<Int>) {
         require(numbers.toSet().size == LOTTO_NUMBER_COUNT) { LOTTO_NUMBER_DUPLICATE_ILLEGAL.message }
     }
 
-    // TODO: 추가 기능 구현
     fun countCorrectNumber(winNumber: List<Int>): Int {
         var count = 0
         for (number in numbers) {
