@@ -21,7 +21,7 @@ class ResultCalculatorTest {
 
     @ParameterizedTest
     @MethodSource("provideRankTestParameters")
-    fun `당첨된 등수 테스트`(count: Int, bonusNumberCorrect: Boolean, expected: Rank) {
+    fun `당첨된 등수를 계산한다`(count: Int, bonusNumberCorrect: Boolean, expected: Rank) {
         val result = resultCalculator.calculateRank(count, bonusNumberCorrect)
         assertThat(result).isEqualTo(expected)
     }
