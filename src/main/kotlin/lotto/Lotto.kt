@@ -10,4 +10,11 @@ class Lotto(private val numbers: List<Int>) {
     }
 
     // TODO: 추가 기능 구현
+    fun countCorrectNumber(winNumber: List<Int>): Int {
+        var count = 0
+        for (number in numbers) {
+            if (winNumber.contains(number)) count += 1
+        }
+        return count
+    }
 }
