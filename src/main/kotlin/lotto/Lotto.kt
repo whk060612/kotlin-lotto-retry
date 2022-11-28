@@ -20,4 +20,8 @@ class Lotto(private val numbers: List<Int>) {
     fun checkBonusNumberCorrect(bonusNumber: Int): Boolean {
         return numbers.contains(bonusNumber)
     }
+
+    fun getNumbers(): List<Int> {
+        return numbers.sorted()
+    }
 }
