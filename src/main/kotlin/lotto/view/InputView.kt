@@ -1,14 +1,14 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.exception.Validator
+import lotto.exception.BuyMoneyValidator
+import lotto.exception.WinningNumbersValidator
 
 class InputView {
 
-    private val validator = Validator()
-
     fun readBuyMoney(): Int {
         val input = Console.readLine()
-        return validator.checkBuyMoney(input)
+        val buyMoneyValidator = BuyMoneyValidator()
+        return buyMoneyValidator.checkBuyMoney(input)
     }
 }
