@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 import lotto.data.LOTTO_NUMBER_COUNT

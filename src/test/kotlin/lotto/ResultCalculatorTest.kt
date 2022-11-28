@@ -3,6 +3,7 @@ package lotto
 import lotto.data.FIFTH_CORRECT_COUNT
 import lotto.data.Rank
 import lotto.data.SECOND_AND_THIRD_CORRECT_COUNT
+import lotto.domain.ResultCalculator
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.params.ParameterizedTest

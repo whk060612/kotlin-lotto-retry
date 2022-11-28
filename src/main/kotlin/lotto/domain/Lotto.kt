@@ -1,4 +1,4 @@
-package lotto
+package lotto.domain
 
 import lotto.data.ErrorMessage.*
 import lotto.data.LOTTO_NUMBER_COUNT
