@@ -30,11 +30,12 @@ class LottoController {
     }
 
     fun readWinLotto(): Lotto {
+        outputView.printInputWinNumbersMent()
         val winNumbers = inputView.readWinNumbers()
         return Lotto(winNumbers)
     }
 
-    fun readBonusNumber(winLotto: Lotto): Int {
+    fun readBonusNumber(winLotto: Lotto): Int {        outputView.printInputBonusNumberMent()
         val bonusNumber = inputView.readBonusNumber()
         val inputValidator = InputValidator()
         if (!inputValidator.checkNumberRange(bonusNumber)) throw IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE_ILLEGAL.message)

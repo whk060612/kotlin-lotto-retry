@@ -18,4 +18,12 @@ class OutputView {
             println(lotto.getNumbers())
         }
     }
+
+    fun printInputWinNumbersMent(){
+        println(Announcement.INPUT_LOTTO_NUMBER_MENT.message)
+    }
+
+    fun printInputBonusNumberMent(){
+        println(Announcement.INPUT_BONUS_NUMBER_MENT.message)
+    }
 }
