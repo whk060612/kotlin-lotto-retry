@@ -3,6 +3,7 @@ package lotto.data
 const val MINIMUM_LOTTO_NUMBER = 1
 const val MAXIMUM_LOTTO_NUMBER = 45
 const val LOTTO_NUMBER_COUNT = 6
+const val LOTTO_MONEY_UNIT = 1000
 
 /* lotto rank correct count */
 const val FIRST_CORRECT_COUNT = 6

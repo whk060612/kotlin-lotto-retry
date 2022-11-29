@@ -2,6 +2,7 @@ package lotto.controller
 
 import lotto.domain.Lotto
 import lotto.domain.LottoGenerator
+import lotto.domain.LottoMoney
 import lotto.view.AnnouncementOutputView
 import lotto.view.InputView
 import lotto.view.ResultOutputView
@@ -11,9 +12,10 @@ class LottoController {
     private val announcementOutputView = AnnouncementOutputView()
     private val inputView = InputView()
 
-    fun readBuyMoney(): Int {
+    fun readLottoMoney(): LottoMoney {
         announcementOutputView.printInputMoneyMent()
-        return inputView.readBuyMoney()
+        val inputMoney = inputView.readBuyMoney()
+        return LottoMoney(inputMoney)
     }
 
     fun generateLotto(money: Int): List<Lotto> {
