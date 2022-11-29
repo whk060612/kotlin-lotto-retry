@@ -7,4 +7,6 @@ fun main() {
     val lottoMoney = lottoController.readLottoMoney()
     val lottos = lottoController.generateLotto(lottoMoney.getLottoCount())
     lottoController.printLotto(lottos)
+    val winLotto = lottoController.readWinLotto()
+    val bonusNumber = lottoController.readBonusNumber(winLotto)
 }

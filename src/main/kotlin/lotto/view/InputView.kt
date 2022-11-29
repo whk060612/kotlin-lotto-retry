@@ -3,19 +3,29 @@ package lotto.view
 import camp.nextstep.edu.missionutils.Console
 import lotto.data.ErrorMessage
 import lotto.exception.InputValidator
-import lotto.exception.WinningNumbersValidator
 
 class InputView {
 
     private val inputValidator = InputValidator()
-    fun readBuyMoney(): Int {
+    fun readLottoMoney(): Int {
         val input = Console.readLine()
         if (inputValidator.checkInputInteger(input)) return input.toInt()
-        else throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+        throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
     }
 
-    fun readWinningNumbers() {
+    fun readWinNumbers(): List<Int> {
         val input = Console.readLine()
-        val winningNumbersValidator = WinningNumbersValidator()
+        val result = mutableListOf<Int>()
+        for (number in input.split(",")) {
+            if (inputValidator.checkInputInteger(number)) result.add(number.toInt())
+            else throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+        }
+        return result
+    }
+
+    fun readBonusNumber(): Int {
+        val input = Console.readLine()
+        if (!inputValidator.checkInputInteger(input)) throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+        return input.toInt()
     }
 }
