@@ -5,17 +5,35 @@ import kotlin.math.roundToInt
 
 class ResultCalculator {
 
-    fun calculateRank(correctCount: Int, bonusNumberCorrect: Boolean): Rank = when (correctCount) {
-        FIRST_CORRECT_COUNT -> Rank.FIRST
-        SECOND_AND_THIRD_CORRECT_COUNT -> if (bonusNumberCorrect) Rank.SECOND else Rank.THIRD
-        FOURTH_CORRECT_COUNT -> Rank.FOURTH
-        else -> Rank.FIFTH
+    fun calculateRankResult(lottos: List<Lotto>, winNumber: Pair<Lotto, Int>): List<Rank> {
+        val rankResult = mutableListOf<Rank>()
+        for (lotto in lottos) {
+            val correctCount = lotto.countCorrectNumber(winNumber.first)
+            val isBonusNumberCorrect = lotto.checkBonusNumberCorrect(winNumber.second)
+            val result = calculateRank(correctCount, isBonusNumberCorrect)
+            if (result != Rank.NOTHING) rankResult.add(result)
+        }
+        return rankResult
     }
 
-    fun calculateYieldRate(prize: Int, buyMoney: Int):Double {
+    private fun calculateRank(correctCount: Int, bonusNumberCorrect: Boolean): Rank {
+        if (correctCount == FIRST_CORRECT_COUNT) return Rank.FIRST
+        if (correctCount == SECOND_AND_THIRD_CORRECT_COUNT) {
+            if (bonusNumberCorrect) return Rank.SECOND
+            return Rank.THIRD
+        }
+        if (correctCount == FOURTH_CORRECT_COUNT) return Rank.FOURTH
+        if (correctCount == FIFTH_CORRECT_COUNT) return Rank.FIFTH
+        return Rank.NOTHING
+    }
+
+    fun calculateYieldRate(ranks: List<Rank>, buyMoney: Int): Double {
+        var prize = 0
+        for (rank in ranks) {
+            prize += rank.prize
+        }
         val yieldRate = prize.toDouble() / buyMoney.toDouble() * 100.0
-        val result = (yieldRate * 10.0).roundToInt() / 10.0
-        return result
+        return (yieldRate * 10.0).roundToInt() / 10.0
     }
 
 }
