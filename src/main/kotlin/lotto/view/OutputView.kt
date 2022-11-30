@@ -47,7 +47,7 @@ class OutputView {
         println(YIELD_MENT.format(yieldValue))
     }
 
-    fun printErrorMessage(message:String){
+    fun printErrorMessage(message: String) {
         println(message)
     }
 }

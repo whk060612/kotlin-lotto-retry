@@ -12,12 +12,12 @@ class InputValidator {
         return true
     }
 
-    fun checkNumberRange(number:Int):Boolean{
-        if((number< MINIMUM_LOTTO_NUMBER) or (number> MAXIMUM_LOTTO_NUMBER)) return false
+    fun checkNumberRange(number: Int): Boolean {
+        if ((number < MINIMUM_LOTTO_NUMBER) or (number > MAXIMUM_LOTTO_NUMBER)) return false
         return true
     }
 
-    fun checkBonusNumberDuplicate(bonusNumber:Int, winLotto: Lotto):Boolean{
+    fun checkBonusNumberDuplicate(bonusNumber: Int, winLotto: Lotto): Boolean {
         if (winLotto.checkBonusNumberDuplicate(bonusNumber)) return true
         return false
     }
