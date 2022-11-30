@@ -1,8 +1,6 @@
 package lotto.controller
 
-import lotto.data.ErrorMessage
-import lotto.data.LOTTO_MONEY_UNIT
-import lotto.data.Rank
+import lotto.data.*
 import lotto.domain.Lotto
 import lotto.domain.LottoGenerator
 import lotto.domain.LottoMoney
@@ -44,12 +42,12 @@ class LottoController {
         outputView.printInputBonusNumberMent()
         val bonusNumber = inputView.readBonusNumber()
         val inputValidator = InputValidator()
-        if (!inputValidator.checkNumberRange(bonusNumber)) throw IllegalArgumentException(ErrorMessage.LOTTO_NUMBER_RANGE_ILLEGAL.message)
+        if (!inputValidator.checkNumberRange(bonusNumber)) throw IllegalArgumentException(LOTTO_NUMBER_RANGE_ILLEGAL)
         if (inputValidator.checkBonusNumberDuplicate(
                 bonusNumber,
                 winLotto
             )
-        ) throw IllegalArgumentException(ErrorMessage.BONUS_NUMBER_DUPLICATE.message)
+        ) throw IllegalArgumentException(BONUS_NUMBER_DUPLICATE)
         return bonusNumber
     }
 

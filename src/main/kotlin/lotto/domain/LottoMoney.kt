@@ -1,11 +1,11 @@
 package lotto.domain
 
-import lotto.data.ErrorMessage
 import lotto.data.LOTTO_MONEY_UNIT
+import lotto.data.MONEY_NOT_1000
 
 class LottoMoney(private val money: Int) {
     init {
-        require(money % LOTTO_MONEY_UNIT == 0) { ErrorMessage.MONEY_NOT_1000.message }
+        require(money % LOTTO_MONEY_UNIT == 0) { MONEY_NOT_1000 }
     }
 
     fun getLottoCount(): Int {

@@ -1,7 +1,7 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.data.ErrorMessage
+import lotto.data.NOT_NUMBER
 import lotto.exception.InputValidator
 
 class InputView {
@@ -10,7 +10,7 @@ class InputView {
     fun readLottoMoney(): Int {
         val input = Console.readLine()
         if (inputValidator.checkInputInteger(input)) return input.toInt()
-        throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+        throw IllegalArgumentException(NOT_NUMBER)
     }
 
     fun readWinNumbers(): List<Int> {
@@ -18,14 +18,14 @@ class InputView {
         val result = mutableListOf<Int>()
         for (number in input.split(",")) {
             if (inputValidator.checkInputInteger(number)) result.add(number.toInt())
-            else throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+            else throw IllegalArgumentException(NOT_NUMBER)
         }
         return result
     }
 
     fun readBonusNumber(): Int {
         val input = Console.readLine()
-        if (!inputValidator.checkInputInteger(input)) throw IllegalArgumentException(ErrorMessage.NOT_NUMBER.message)
+        if (!inputValidator.checkInputInteger(input)) throw IllegalArgumentException(NOT_NUMBER)
         return input.toInt()
     }
 }

@@ -1,16 +1,15 @@
 package lotto.view
 
-import lotto.data.InputMent
-import lotto.data.ResultMent
+import lotto.data.*
 import lotto.domain.Lotto
 
 class OutputView {
     fun printInputMoneyMent() {
-        println(InputMent.INPUT_MONEY_MENT.message)
+        println(INPUT_MONEY_MENT)
     }
 
     fun printLottoCount(count: Int) {
-        println(ResultMent.LOTTO_COUNT_MENT.getLottoCountMent(count))
+        println(LOTTO_COUNT_MENT.format(count))
     }
 
     fun printLottos(lottos: List<Lotto>) {
@@ -20,31 +19,31 @@ class OutputView {
     }
 
     fun printInputWinNumbersMent() {
-        println(InputMent.INPUT_LOTTO_NUMBER_MENT.message)
+        println(INPUT_LOTTO_NUMBER_MENT)
     }
 
     fun printInputBonusNumberMent() {
-        println(InputMent.INPUT_BONUS_NUMBER_MENT.message)
+        println(INPUT_BONUS_NUMBER_MENT)
     }
 
     fun printResultMent() {
-        println(ResultMent.RESULT_MENT.message)
+        println(RESULT_MENT)
     }
 
     fun printRankResult(rankCounts: List<Int>) {
         val ments = listOf(
-            ResultMent.FIRST_RESULT_MENT,
-            ResultMent.SECOND_RESULT_MENT,
-            ResultMent.THIRD_RESULT_MENT,
-            ResultMent.FOURTH_RESULT_MENT,
-            ResultMent.FIFTH_RESULT_MENT
+            FIRST_RANK_RESULT,
+            SECOND_RANK_RESULT,
+            THIRD_RANK_RESULT,
+            FOURTH_RANK_RESULT,
+            FIFTH_RANK_RESULT
         )
         for (index in rankCounts.size - 1 downTo 0) {
-            println(ments[index].getResultMent(rankCounts[index]))
+            println(ments[index].format(rankCounts[index]))
         }
     }
 
     fun printYieldResult(yieldValue: Double) {
-        println(ResultMent.YIELD_MENT.getYieldMent(yieldValue))
+        println(YIELD_MENT.format(yieldValue))
     }
 }

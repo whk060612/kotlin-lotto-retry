@@ -17,13 +17,13 @@ class ResultCalculator {
     }
 
     private fun calculateRank(correctCount: Int, bonusNumberCorrect: Boolean): Rank {
-        if (correctCount == Rank.FIRST.correctCount) return Rank.FIRST
-        if (correctCount == Rank.SECOND.correctCount) {
+        if (correctCount == FIRST_RANK_CORRECT_COUNT) return Rank.FIRST
+        if (correctCount == SECOND_THIRD_RANK_CORRECT_COUNT) {
             if (bonusNumberCorrect) return Rank.SECOND
             return Rank.THIRD
         }
-        if (correctCount == Rank.FOURTH.correctCount) return Rank.FOURTH
-        if (correctCount == Rank.FIFTH.correctCount) return Rank.FIFTH
+        if (correctCount == FOURTH_RANK_CORRECT_COUNT) return Rank.FOURTH
+        if (correctCount == FIFTH_RANK_CORRECT_COUNT) return Rank.FIFTH
         return Rank.NOTHING
     }
 

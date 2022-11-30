@@ -1,15 +1,12 @@
 package lotto.domain
 
-import lotto.data.ErrorMessage
-import lotto.data.LOTTO_NUMBER_COUNT
-import lotto.data.MAXIMUM_LOTTO_NUMBER
-import lotto.data.MINIMUM_LOTTO_NUMBER
+import lotto.data.*
 
 class Lotto(private val numbers: List<Int>) {
     init {
-        require(numbers.size == LOTTO_NUMBER_COUNT) { ErrorMessage.LOTTO_NUMBER_COUNT_ILLEGAL.message }
-        require(numbers.toSet().size == LOTTO_NUMBER_COUNT) { ErrorMessage.LOTTO_NUMBER_DUPLICATE_ILLEGAL.message }
-        require(checkLottoNumberRange()) { ErrorMessage.LOTTO_NUMBER_RANGE_ILLEGAL.message }
+        require(numbers.size == LOTTO_NUMBER_COUNT) { LOTTO_NUMBER_COUNT_ILLEGAL }
+        require(numbers.toSet().size == LOTTO_NUMBER_COUNT) { LOTTO_NUMBER_DUPLICATE_ILLEGAL }
+        require(checkLottoNumberRange()) { LOTTO_NUMBER_RANGE_ILLEGAL }
     }
 
     private fun checkLottoNumberRange(): Boolean {
