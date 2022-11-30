@@ -5,7 +5,6 @@ import lotto.domain.Lotto
 import lotto.domain.LottoGenerator
 import lotto.domain.LottoMoney
 import lotto.domain.ResultCalculator
-import lotto.exception.InputValidator
 import lotto.view.InputView
 import lotto.view.OutputView
 
@@ -18,8 +17,8 @@ class LottoController {
 
     fun readLottoMoney(): LottoMoney {
         outputView.printInputMoneyMent()
-        val inputMoney = inputView.readLottoMoney()
-        return LottoMoney(inputMoney)
+        val lottoMoney = repeatInputProcess { inputView.readLottoMoney() }
+        return lottoMoney as LottoMoney
     }
 
     fun generateLotto(lottoCount: Int): List<Lotto> {
@@ -34,24 +33,17 @@ class LottoController {
 
     fun readWinLotto(): Lotto {
         outputView.printInputWinNumbersMent()
-        val winNumbers = inputView.readWinNumbers()
-        return Lotto(winNumbers)
+        val winNumbers = repeatInputProcess { inputView.readWinNumbers() }
+        return winNumbers as Lotto
     }
 
     fun readBonusNumber(winLotto: Lotto): Int {
         outputView.printInputBonusNumberMent()
-        val bonusNumber = inputView.readBonusNumber()
-        val inputValidator = InputValidator()
-        if (!inputValidator.checkNumberRange(bonusNumber)) throw IllegalArgumentException(LOTTO_NUMBER_RANGE_ILLEGAL)
-        if (inputValidator.checkBonusNumberDuplicate(
-                bonusNumber,
-                winLotto
-            )
-        ) throw IllegalArgumentException(BONUS_NUMBER_DUPLICATE)
-        return bonusNumber
+        val bonusNumber = repeatInputProcess { inputView.readBonusNumber(winLotto) }
+        return bonusNumber as Int
     }
 
-    fun printResult(rankCounts:List<Int>, yieldValue:Double) {
+    fun printResult(rankCounts: List<Int>, yieldValue: Double) {
         outputView.printResultMent()
         outputView.printRankResult(rankCounts)
         outputView.printYieldResult(yieldValue)
@@ -78,5 +70,15 @@ class LottoController {
 
     fun calculateYield(ranks: List<Rank>, lottoCount: Int): Double {
         return resultCalculator.calculateYieldRate(ranks, lottoCount * LOTTO_MONEY_UNIT)
+    }
+
+    private fun repeatInputProcess(inputProcess: () -> Any): Any {
+        while (true) {
+            try {
+                return inputProcess()
+            } catch (exception: IllegalArgumentException) {
+                outputView.printErrorMessage(exception.message.toString())
+            }
+        }
     }
 }
