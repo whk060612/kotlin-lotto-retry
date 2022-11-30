@@ -1,8 +1,7 @@
 package lotto
 
-import lotto.data.FIFTH_CORRECT_COUNT
 import lotto.data.Rank
-import lotto.data.SECOND_AND_THIRD_CORRECT_COUNT
+import lotto.domain.Lotto
 import lotto.domain.ResultCalculator
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
@@ -22,33 +21,34 @@ class ResultCalculatorTest {
 
     @ParameterizedTest
     @MethodSource("provideRankTestParameters")
-    fun `당첨된 등수를 계산한다`(count: Int, bonusNumberCorrect: Boolean, expected: Rank) {
-        val result = resultCalculator.calculateRank(count, bonusNumberCorrect)
+    fun `당첨된 등수를 계산한다`(lottos: List<Lotto>, winNumber: Pair<Lotto, Int>, expected: List<Rank>) {
+        val result = resultCalculator.calculateRankResult(lottos, winNumber)
         assertThat(result).isEqualTo(expected)
     }
 
     @ParameterizedTest
     @MethodSource("provideYieldRankTestParameters")
-    fun `수익률을 계산한다`(prize: Int, buyMoney: Int, expected: Double) {
-        val result = resultCalculator.calculateYieldRate(prize, buyMoney)
+    fun `수익률을 계산한다`(ranks: List<Rank>, buyMoney: Int, expected: Double) {
+        val result = resultCalculator.calculateYieldRate(ranks, buyMoney)
         assertThat(result).isEqualTo(expected)
     }
 
     companion object {
         @JvmStatic
         fun provideRankTestParameters(): Stream<Arguments> {
+            val lottos = listOf(Lotto(listOf(1, 2, 3, 4, 5, 6)), Lotto(listOf(7, 8, 9, 10, 11, 12)))
             return Stream.of(
-                Arguments.of(FIFTH_CORRECT_COUNT, false, Rank.FIFTH),
-                Arguments.of(SECOND_AND_THIRD_CORRECT_COUNT, true, Rank.SECOND),
-                Arguments.of(SECOND_AND_THIRD_CORRECT_COUNT, false, Rank.THIRD)
+                Arguments.of(lottos, Pair(Lotto(listOf(1, 2, 3, 7, 8, 9)), 10), listOf(Rank.FIFTH, Rank.FIFTH)),
+                Arguments.of(lottos, Pair(Lotto(listOf(1, 2, 3, 4, 5, 6)), 10), listOf(Rank.FIRST)),
+                Arguments.of(lottos, Pair(Lotto(listOf(1, 2, 3, 4, 7, 8)), 10), listOf(Rank.FOURTH))
             )
         }
 
         @JvmStatic
         fun provideYieldRankTestParameters(): Stream<Arguments> {
             return Stream.of(
-                Arguments.of(Rank.FIFTH.prize, 8000, 62.5),
-                Arguments.of(Rank.FIFTH.prize, 3000, 166.7)
+                Arguments.of(listOf(Rank.FIFTH), 8000, 62.5),
+                Arguments.of(listOf(Rank.FOURTH, Rank.FIFTH), 10000, 550.0)
             )
         }
     }
