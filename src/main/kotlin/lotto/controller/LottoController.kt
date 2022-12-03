@@ -12,46 +12,54 @@ class LottoController {
 
     private val resultCalculator = ResultCalculator()
 
-    fun readLottoMoney(): LottoMoney {
+    fun start() {
+        val lottoMoney = readLottoMoney()
+        val lottos = generateLotto(lottoMoney.getLottoCount())
+        printLotto(lottos)
+        val winLotto = readWinLotto()
+        val rankResult = calculateRankResult(lottos, Pair(winLotto, readBonusNumber(winLotto)))
+        printResult(calculateRankCounts(rankResult), calculateYield(rankResult, lottoMoney.getLottoCount()))
+    }
+
+    private fun readLottoMoney(): LottoMoney {
         outputView.printInputMoneyMent()
         val lottoMoney = repeatInputProcess { inputView.readLottoMoney() }
         return lottoMoney as LottoMoney
     }
 
-    fun generateLotto(lottoCount: Int): List<Lotto> {
+    private fun generateLotto(lottoCount: Int): List<Lotto> {
         val lottoGenerator = LottoGenerator(lottoCount)
         return lottoGenerator.generate()
     }
 
-    fun printLotto(lottos: List<Lotto>) {
+    private fun printLotto(lottos: List<Lotto>) {
         outputView.printLottoCount(lottos.size)
         outputView.printLottos(lottos)
     }
 
-    fun readWinLotto(): Lotto {
+    private fun readWinLotto(): Lotto {
         outputView.printInputWinNumbersMent()
         val winNumbers = repeatInputProcess { inputView.readWinNumbers() }
         return winNumbers as Lotto
     }
 
-    fun readBonusNumber(winLotto: Lotto): Int {
+    private fun readBonusNumber(winLotto: Lotto): Int {
         outputView.printInputBonusNumberMent()
         val bonusNumber = repeatInputProcess { inputView.readBonusNumber(winLotto) }
         return bonusNumber as Int
     }
 
-    fun printResult(rankCounts: List<Int>, yieldValue: Double) {
+    private fun printResult(rankCounts: List<Int>, yieldValue: Double) {
         outputView.printResultMent()
         outputView.printRankResult(rankCounts)
         outputView.printYieldResult(yieldValue)
     }
 
-    fun calculateRankResult(lottos: List<Lotto>, winNumbers: Pair<Lotto, Int>): List<Rank> {
+    private fun calculateRankResult(lottos: List<Lotto>, winNumbers: Pair<Lotto, Int>): List<Rank> {
         return resultCalculator.calculateRankResult(lottos, winNumbers)
     }
 
-    fun calculateRankCounts(rankResult: List<Rank>): List<Int> {
-        /*리스트에 당첨된 순위 저장*/
+    private fun calculateRankCounts(rankResult: List<Rank>): List<Int> {
         val rankCounts = mutableListOf(0, 0, 0, 0, 0)
         for (rank in rankResult) {
             when (rank) {
@@ -65,7 +73,7 @@ class LottoController {
         return rankCounts
     }
 
-    fun calculateYield(ranks: List<Rank>, lottoCount: Int): Double {
+    private fun calculateYield(ranks: List<Rank>, lottoCount: Int): Double {
         return resultCalculator.calculateYieldRate(ranks, lottoCount * LOTTO_MONEY_UNIT)
     }
 
