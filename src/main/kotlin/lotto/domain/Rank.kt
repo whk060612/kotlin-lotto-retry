@@ -1,4 +1,6 @@
-package lotto.data
+package lotto.domain
+
+import lotto.utils.*
 
 enum class Rank(val prize: Int) {
     FIRST(FIRST_RANK_PRIZE),

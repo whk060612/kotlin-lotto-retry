@@ -1,9 +1,9 @@
 package lotto.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import lotto.data.LOTTO_NUMBER_COUNT
-import lotto.data.MAXIMUM_LOTTO_NUMBER
-import lotto.data.MINIMUM_LOTTO_NUMBER
+import lotto.utils.LOTTO_NUMBER_COUNT
+import lotto.utils.MAXIMUM_LOTTO_NUMBER
+import lotto.utils.MINIMUM_LOTTO_NUMBER
 
 class LottoGenerator(private val count: Int) {
     fun generate(): List<Lotto> {

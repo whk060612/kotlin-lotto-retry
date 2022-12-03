@@ -1,7 +1,7 @@
 package lotto.view
 
-import lotto.data.*
 import lotto.domain.Lotto
+import lotto.utils.*
 
 class OutputView {
     fun printInputMoneyMent() {

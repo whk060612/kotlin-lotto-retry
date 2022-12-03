@@ -1,12 +1,12 @@
 package lotto.view
 
 import camp.nextstep.edu.missionutils.Console
-import lotto.data.BONUS_NUMBER_DUPLICATE
-import lotto.data.LOTTO_NUMBER_RANGE_ILLEGAL
-import lotto.data.NOT_NUMBER
+import lotto.utils.BONUS_NUMBER_DUPLICATE
+import lotto.utils.LOTTO_NUMBER_RANGE_ILLEGAL
+import lotto.utils.NOT_NUMBER
 import lotto.domain.Lotto
 import lotto.domain.LottoMoney
-import lotto.exception.InputValidator
+import lotto.utils.InputValidator
 
 class InputView {
 

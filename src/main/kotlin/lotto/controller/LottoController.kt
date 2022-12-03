@@ -1,10 +1,7 @@
 package lotto.controller
 
-import lotto.data.*
-import lotto.domain.Lotto
-import lotto.domain.LottoGenerator
-import lotto.domain.LottoMoney
-import lotto.domain.ResultCalculator
+import lotto.domain.*
+import lotto.utils.LOTTO_MONEY_UNIT
 import lotto.view.InputView
 import lotto.view.OutputView
 

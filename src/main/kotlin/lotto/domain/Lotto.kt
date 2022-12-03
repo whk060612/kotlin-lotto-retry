@@ -1,6 +1,6 @@
 package lotto.domain
 
-import lotto.data.*
+import lotto.utils.*
 
 class Lotto(private val numbers: List<Int>) {
     init {

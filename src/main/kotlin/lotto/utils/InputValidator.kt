@@ -1,7 +1,5 @@
-package lotto.exception
+package lotto.utils
 
-import lotto.data.MAXIMUM_LOTTO_NUMBER
-import lotto.data.MINIMUM_LOTTO_NUMBER
 import lotto.domain.Lotto
 
 /* 입력에서 생기는 예외 검사 */

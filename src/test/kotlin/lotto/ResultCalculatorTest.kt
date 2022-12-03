@@ -1,6 +1,6 @@
 package lotto
 
-import lotto.data.Rank
+import lotto.domain.Rank
 import lotto.domain.Lotto
 import lotto.domain.ResultCalculator
 import org.assertj.core.api.Assertions.assertThat

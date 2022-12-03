@@ -1,4 +1,4 @@
-package lotto.data
+package lotto.utils
 
 // lotto
 const val MINIMUM_LOTTO_NUMBER = 1
@@ -21,12 +21,12 @@ const val NOTHING_RANK_PRIZE = 0
 
 // Error Message
 private const val ERROR_PREFIX = "[ERROR]"
-const val LOTTO_NUMBER_COUNT_ILLEGAL = "${ERROR_PREFIX} 로또 번호는 6개의 숫자여야 합니다."
-const val LOTTO_NUMBER_DUPLICATE_ILLEGAL = "${ERROR_PREFIX} 로또 번호는 중복되지 않아야 합니다."
-const val NOT_NUMBER = "${ERROR_PREFIX} 숫자를 입력해주세요."
-const val MONEY_NOT_1000 = "${ERROR_PREFIX} 1,000원 단위로 입력해주세요."
-const val LOTTO_NUMBER_RANGE_ILLEGAL = "${ERROR_PREFIX} 로또 번호는 1부터 45 사이의 숫자여야 합니다."
-const val BONUS_NUMBER_DUPLICATE = "${ERROR_PREFIX} 당첨 번호와 중복되면 안됩니다."
+const val LOTTO_NUMBER_COUNT_ILLEGAL = "$ERROR_PREFIX 로또 번호는 6개의 숫자여야 합니다."
+const val LOTTO_NUMBER_DUPLICATE_ILLEGAL = "$ERROR_PREFIX 로또 번호는 중복되지 않아야 합니다."
+const val NOT_NUMBER = "$ERROR_PREFIX 숫자를 입력해주세요."
+const val MONEY_NOT_1000 = "$ERROR_PREFIX 1,000원 단위로 입력해주세요."
+const val LOTTO_NUMBER_RANGE_ILLEGAL = "$ERROR_PREFIX 로또 번호는 1부터 45 사이의 숫자여야 합니다."
+const val BONUS_NUMBER_DUPLICATE = "$ERROR_PREFIX 당첨 번호와 중복되면 안됩니다."
 
 // Input Ment
 const val INPUT_MONEY_MENT = "구입금액을 입력해 주세요."

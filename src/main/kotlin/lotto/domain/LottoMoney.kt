@@ -1,7 +1,7 @@
 package lotto.domain
 
-import lotto.data.LOTTO_MONEY_UNIT
-import lotto.data.MONEY_NOT_1000
+import lotto.utils.LOTTO_MONEY_UNIT
+import lotto.utils.MONEY_NOT_1000
 
 class LottoMoney(private val money: Int) {
     init {

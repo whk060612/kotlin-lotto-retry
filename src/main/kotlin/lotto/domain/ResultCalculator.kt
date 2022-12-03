@@ -1,6 +1,9 @@
 package lotto.domain
 
-import lotto.data.*
+import lotto.utils.FIFTH_RANK_CORRECT_COUNT
+import lotto.utils.FIRST_RANK_CORRECT_COUNT
+import lotto.utils.FOURTH_RANK_CORRECT_COUNT
+import lotto.utils.SECOND_THIRD_RANK_CORRECT_COUNT
 import kotlin.math.roundToInt
 
 class ResultCalculator {
