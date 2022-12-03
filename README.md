@@ -1,5 +1,84 @@
 # 미션 - 로또
 
+## 기능 목록
+
+- [x] 로또 구입 금액을 입력 받는다.
+    - 1,000원으로 나누어 떨어지지 않는 경우 예외 처리
+    - 숫자가 아닌 경우 예외 처리
+- [x] 로또 구입 금액 만큼 로또를 발행한다.
+- [x] 발행된 로또를 출력한다.
+- [x] 당첨 번호를 입력받는다.
+    - 숫자가 중복되는 경우 예외 처리
+    - 여섯 자리가 아닌 경우 예외 처리
+    - 숫자가 아닌 경우 예외 처리
+    - 숫자 범위가 1~45 가 아닌 경우 예외 처리
+- [x] 보너스 번호를 입력받는다.
+    - 당첨 번호와 중복되는 경우 예외 처리
+    - 숫자가 아닌 경우 예외 처리
+    - 숫자 범위가 1~45 가 아닌 경우 예외 처리
+- [x] 사용자가 구매한 로또 번호와 당첨 번호를 비교한다.
+    - [x] 몇 개의 숫자가 맞는지 비교
+    - [x] 보너스 번호에 당첨됐는지 비교
+- [x] 당첨 결과를 계산한다.
+    - [x] 몇 등에 당첨됐는지 계산
+    - [x] 수익률 계산
+- [x] 당첨 결과를 출력한다.
+
+### 역할 분담
+
+#### 로또 구입 금액 클래스
+
+    - 1000원으로 나누어 떨어지는지 검사
+
+    - 로또 몇 장 살 수 있는지 계산
+
+#### 로또 발행하는 클래스
+
+    - 받은 금액 만큼 로또를 발행
+
+#### 로또 클래스
+
+    - 로또 번호의 개수가 6인지 검사
+    - 로또 번호에 중복된 숫자있는지 검사
+    - 1부터 45 사이의 숫자인지 검사
+
+    - 로또 번호와 당첨 번호를 비교하여 몇개 맞았는지 계산
+    - 로또 번호를 출력하기 위해 꺼냄
+
+#### 당첨 결과 계산하는 클래스
+
+    - 당첨 내역을 계산한다.
+    - 수익률을 계산한다.
+
+#### 입력 받는 클래스
+
+    - 로또 구입 금액을 1,000원 단위로 입력받는다.
+    - 당첨 번호 여섯 자리를 입력받는다. 번호는 쉼표를 기준으로 구분한다.
+    - 보너스 번호를 입력 받는다.
+
+#### 입력 값 유효성 검사하는 클래스
+
+    - 입력에서 생기는 예외들을 처리한다.
+      - 로또 구입 금액 입력 시
+        - 숫자가 아닌 경우 검사
+      - 당첨 번호 입력 시
+        - 숫자가 아닌 경우 검사
+      - 보너스 번호 입력 시
+        - 숫자가 아닌 경우 검사
+
+#### 안내 문구를 출력하는 클래스
+
+    - 입력을 요구하는 문구 출력
+    - 결과 출력을 위한 문구 출력
+
+#### 결과를 출력하는 클래스
+
+    - 발행한 로또 출력
+    - 당첨 내역 출력
+    - 수익률 출력
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
@@ -9,11 +88,11 @@
 ## 📮 미션 제출 방법
 
 - 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-  - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-    제출한다.
+    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
+      제출한다.
 - GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-  - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-  - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
+    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
 
 ## 🚨 과제 제출 전 체크 리스트 - 0점 방지
 
@@ -159,28 +238,29 @@ BUILD SUCCESSFUL in 0s
 - 프로그램 구현이 완료되면 `ApplicationTest`의 모든 테스트가 성공해야 한다. **테스트가 실패할 경우 0점 처리한다.**
 - 프로그래밍 요구 사항에서 달리 명시하지 않는 한 파일, 패키지 이름을 수정하거나 이동하지 않는다.
 - indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용한다.
-  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
+    - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+    - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메서드)를 분리하면 된다.
 - 함수(또는 메서드)가 한 가지 일만 하도록 최대한 작게 만들어라.
 - JUnit 5와 AssertJ를 이용하여 본인이 정리한 기능 목록이 정상 동작함을 테스트 코드로 확인한다.
 
 ### 추가된 요구 사항
 
 - 함수(또는 메서드)의 길이가 15라인을 넘어가지 않도록 구현한다.
-  - 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
+    - 함수(또는 메서드)가 한 가지 일만 잘 하도록 구현한다.
 - else를 지양한다.
-  - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
-  - 때로는 if/else, when문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
+    - 힌트: if 조건절에서 값을 return하는 방식으로 구현하면 else를 사용하지 않아도 된다.
+    - 때로는 if/else, when문을 사용하는 것이 더 깔끔해 보일 수 있다. 어느 경우에 쓰는 것이 적절할지 스스로 고민해 본다.
 - Enum 클래스를 적용해 프로그래밍을 구현한다.
 - 도메인 로직에 단위 테스트를 구현해야 한다. 단, UI(System.out, System.in, Scanner) 로직은 제외한다.
-  - 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
-  - 단위 테스트 작성이 익숙하지 않다면 `test/kotlin/lotto/LottoTest`를 참고하여 학습한 후 테스트를 구현한다.
+    - 핵심 로직을 구현하는 코드와 UI를 담당하는 로직을 분리해 구현한다.
+    - 단위 테스트 작성이 익숙하지 않다면 `test/kotlin/lotto/LottoTest`를 참고하여 학습한 후 테스트를 구현한다.
 
 ### 라이브러리
 
-- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
-  - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
-  - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+- [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms` 및 `Console`
+  API를 사용하여 구현해야 한다.
+    - Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickUniqueNumbersInRange()`를 활용한다.
+    - 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
 #### 사용 예시
 
@@ -214,5 +294,5 @@ class Lotto(private val numbers: List<Int>) {
   시작한다.
 - **기능을 구현하기 전 `docs/README.md`에 구현할 기능 목록을 정리**해 추가한다.
 - **Git의 커밋 단위는 앞 단계에서 `docs/README.md`에 정리한 기능 목록 단위**로 추가한다.
-  - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
+    - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
